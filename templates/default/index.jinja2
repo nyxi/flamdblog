@@ -1,0 +1,20 @@
+{% include 'default/head.jinja2' %}
+<body>
+    <div class="ui two column page grid">
+        {% include 'default/menu.jinja2' %}
+        <div class="eleven wide column">
+            {% if not single %}
+                {% include 'default/content.jinja2' %}
+            {% else %}
+                {% include 'default/single.jinja2' %}
+            {% endif %}
+        </div>
+        <div class="five wide column">
+            <div class="ui segment">
+                {% include 'default/sidebar.jinja2' %}
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

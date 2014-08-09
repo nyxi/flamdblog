@@ -1,0 +1,16 @@
+        <nav class="ui menu">
+        <h2 class="header item">{{ sitetitle }}</h2>
+            <a class="{% if not single %}active {% endif %}item" href="/">
+                <i class="home icon"></i> Blog
+            </a>
+            {% for item in pages -%}
+            <a class="{% if single and item['url'] == single['url'] %}active {% endif %}item" href="{{ item['url'] }}">
+                {{ item['title'] }}
+            </a>
+            {%- endfor %}
+            <div style="float:right;">
+            {% if admin %}<a class="item" href="/admin/"><i class="edit icon"></i> Post</a>
+            <a class="item" href="/admin/?page"><i class="edit icon"></i> Page</a>
+            {% else %}<a class="item" href="/login/"><i class="key icon"></i> Login</a>{% endif %}
+            </div>
+        </nav>

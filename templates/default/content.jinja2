@@ -1,0 +1,24 @@
+            <div class="ui segment">
+                <div>
+                    <i class="double angle left icon"></i> <a href="{{ oldpage }}">older</a>
+                    {% if newpage %}<span style="float:right;"><a href="{{ newpage }}">newer</a> <i class="ilink double angle right icon"></i></span>{% endif %}
+                </div>
+                {% for item in (archive or frontposts) %}
+                <h3 class="ui header" style="margin-bottom:0px;">
+                    {% if admin -%}
+                        <a href="/edit{{ item['url'] }}" class="ilink"><i class="teal edit icon"></i></a>
+                    {%- endif %}
+                    <a class="ilink" href="{{ item['url'] }}">{{ item['title'] }}</a>
+                    {% if admin %}
+                        <a class="ilink" href="/delete{{ item['url'] }}" style="float:right;"><i class="red trash icon"></i></a>
+                    {% endif %}
+                    </h3><p style="font-size:0.7em;">{{ item['date'] }} {{ item['categories'] }}</p>
+                    {% if item['teaser'] -%}
+                        {{ item['teaser'] }}
+                        <a class="small ui button" href="{{ item['url'] }}">Read more</a>
+                    {%- endif %}
+                    {% if item['content'] and not item['teaser'] -%}
+                        {{ item['content'] }}
+                    {%- endif %}
+                {% endfor %}
+            </div>

@@ -1,0 +1,8 @@
+[core]
+title: flamdBlog
+password: verysecreT
+port: 5001
+
+[cosmetic]
+theme: default
+posts_per_page: 5

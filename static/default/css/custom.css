@@ -1,0 +1,23 @@
+body {
+    font-family: "Lato",Verdana;
+    background: url('/static/default/images/line-tile.png') repeat scroll left top #262C33;
+}
+
+.ilink {
+    text-decoration: none;
+    color: inherit;
+}
+
+div.highlight {
+    overflow: scroll;
+    padding-left: 5px;
+}
+
+div.highlight pre span {
+    font-family: "Source Code Pro",Verdana;
+}
+
+div#editor {
+    font-family: "Source Code Pro";
+    font-size: 13pt;
+}

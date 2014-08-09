@@ -1,0 +1,26 @@
+{% include 'default/head.jinja2' %}
+<body>
+    <div class="ui three column grid">
+        <div class="three wide column">
+        </div>
+        <div class="eight wide column">
+            {% include 'default/menu.jinja2' %}
+            <div class="ui fluid form segment"><form method="post">
+                <div class="two fields">
+                    <div class="field">
+                        <input name="password" placeholder="Password" type="password">
+                    </div>
+                    <div id="postbutton" class="ui blue button">Login</div>
+                </div>
+            </form></div>
+        </div>
+        <div class="three wide column">
+        </div>
+    </div>
+</body>
+<script>
+    // Submit the form when we click the POST button
+    $( "#postbutton" ).click(function() { $( "form" ).submit(); } );
+</script>
+
+</html>

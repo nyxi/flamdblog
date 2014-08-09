@@ -1,0 +1,14 @@
+            <div class="ui segment">
+                <h3 class="ui header" style="margin-bottom:0px;">
+                    {% if admin %}<a href="/edit{{ single['url'] }}" class="ilink"><i class="teal edit icon"></i></a>{% endif %}
+                    <a class="ilink" href="{{ single['url'] }}">{{ single['title'] }}</a>
+                    {% if admin %}<a class="ilink" href="/delete{{ single['url'] }}" style="float:right;"><i class="red trash icon"></i></a>{% endif %}
+                </h3>
+                    <p style="font-size:0.7em;">{{ single['date'] }} {{ single['categories'] }}</p>
+                    {% if single['teaser'] -%}
+                        {{ single['teaser'] }}
+                    {%- endif %}
+                    {% if single['content'] -%}
+                        {{ single['content'] }}
+                    {%- endif %}
+            </div>

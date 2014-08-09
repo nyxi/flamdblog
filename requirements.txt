@@ -1,0 +1,4 @@
+arrow>=0.4.4
+Flask>=0.10.1
+misaka>=1.0.2
+Pygments>=1.6

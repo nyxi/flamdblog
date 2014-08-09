@@ -1,0 +1,6 @@
+{% if plugins %}
+    {% for plugin in plugins %}
+        <h4 class="ui header">{{ plugin|replace('_', ' ')|capitalize }}</h4>
+        {{ plugins[plugin] }}
+    {% endfor %}
+{% endif %}

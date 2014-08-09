@@ -1,0 +1,69 @@
+{% include 'default/head.jinja2' %}
+<style type="text/css" media="screen">
+    #editor {
+        height: 800px;
+    }
+</style
+<body>
+    <div class="ui three column grid">
+        <div class="three wide column">
+        </div>
+        <div class="ten wide column">
+            {% include 'default/menu.jinja2' %}
+            <div class="ui fluid form segment"><form method="post"{% if single %} action="/edit/"{% endif %}>
+                <div class="four fields">
+                    <div class="field">
+                        <input name="title" placeholder="Title" type="text"{% if single %} value="{{ single['title'] }}"{% endif %}>
+                    </div>
+                    <div class="field">
+                        <input name="categories" placeholder="Linux,Debian,Python" type="text"{% if single %} value="{{ single['categories'] }}"{% endif %}>
+                    </div>
+                    {% if is_page -%}<input type="hidden" name="is_page" value="herp" />{%- endif %}
+                    <input type="hidden" name="content" id="postbody" />
+                    {% if single %}<input type="hidden" name="filename" value="{{ single['filepath'] }}" />{% endif %}
+                    {% if single %}<input type="hidden" name="date" value="{{ single['date'] }}" />{% endif %}
+                    <div id="postbutton" class="ui blue button">Post</div>
+                </div>
+            </form></div>
+        </div>
+        <div class="three wide column">
+        </div>
+    </div>
+    <div class="ui two column grid">
+        <div class="column">
+            <div id="editor">Your markdown here
+----</div>
+        </div>
+        <div class="column">
+            <div id="marked" class="ui segment">
+            </div>
+        </div>
+    </div>
+    {% if single %}<div id="loadcontent" style="display:none;">{{ single['rawbody'] }}</div>{% endif %}
+</body>
+<script src="/static/default/javascript/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/solarized_dark");
+    editor.getSession().setMode("ace/mode/markdown");
+    editor.getSession().setUseWrapMode(true);
+    // If we are editing an existing post or page, load its contents
+    {% if single %}editor.setValue( $( "div#loadcontent" ).html(), -1);{% endif %}
+</script>
+
+<script src="/static/default/javascript/marked/marked.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    // Keep the preview synced with the editor
+    editor.getSession().on('change', function(e) { $( '#marked' ).html( marked(editor.getValue()) );  } )
+    // Initial sync
+    $( '#marked' ).html( marked(editor.getValue()) );
+</script>
+
+<script>
+    // Get the contents from the editor when we submit the form
+    $( "form" ).submit(function() { $( '#postbody' ).val( editor.getValue() ); } );
+    // Submit the form when we click the POST button
+    $( "#postbutton" ).click(function() { $( "form" ).submit(); } );
+</script>
+
+</html>
