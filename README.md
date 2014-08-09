@@ -5,9 +5,9 @@ A fairly simple blog built with Flask, Misaka and Pygments to gather content fro
 
 __Still very much a work in progress, what you see in the screenshots is essentially what you get.__
 
-[Frontpage](http://nyxi.eu/pics/projects/flamdblog.jpg)
+[Frontpage](http://nyxi.eu/pics/projects/flamdblog.png)
 
-[Editing content](http://nyxi.eu/pics/projects/flamdblog-admin.jpg)
+[Editing content](http://nyxi.eu/pics/projects/flamdblog-admin.png)
 
 Installation
 -----
